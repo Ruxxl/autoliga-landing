@@ -1,0 +1,663 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Авто-Лига — автоюристы по ДТП</title>
+<meta name="description" content="Автоюрист в Астане, Караганде и Алматы. Решение юридических и страховых вопросов по ДТП без предоплаты. Бесплатная консультация.">
+<link rel="icon" href="assets/car-white.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --brand:#E8862A;          /* тёплый оранжевый в оттенке лого */
+  --brand-2:#F4A443;
+  --brand-deep:#C9631A;
+  --gold:#CE9C41;           /* исходный цвет логотипа */
+  --ink:#1D1A17;
+  --muted:#6F6861;
+  --line:#ECE6E0;
+  --bg:#F3EFEB;
+  --card:#FFFFFF;
+  --soft:#F8F5F2;
+  --radius-xl:36px;
+  --radius-lg:26px;
+  --radius:18px;
+  --shadow:0 1px 2px rgba(40,25,10,.04),0 12px 32px -12px rgba(40,25,10,.12);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Manrope,system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--ink);line-height:1.5;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
+.wrap{max-width:1280px;margin:0 auto;padding:16px}
+.shell{background:#FFFDFB;border-radius:calc(var(--radius-xl) + 8px);padding:8px;box-shadow:var(--shadow)}
+section{scroll-margin-top:24px}
+h1,h2,h3{letter-spacing:-.02em;line-height:1.1;font-weight:800}
+h2{font-size:clamp(30px,4vw,48px)}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--brand-deep)}
+.eyebrow::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--brand)}
+.lead{color:var(--muted);font-size:17px;max-width:520px}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;gap:10px;height:56px;padding:0 10px 0 26px;border-radius:999px;font-weight:700;font-size:15px;transition:transform .2s,box-shadow .2s,background .2s}
+.btn .ic{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;transition:transform .25s}
+.btn:hover .ic{transform:rotate(-45deg)}
+.btn:hover{transform:translateY(-1px)}
+.btn-white{background:#fff;color:var(--brand-deep)}
+.btn-white .ic{background:var(--brand);color:#fff}
+.btn-brand{background:var(--brand);color:#fff;box-shadow:0 10px 24px -10px rgba(232,134,42,.8)}
+.btn-brand .ic{background:#fff;color:var(--brand)}
+.btn-ghost{background:rgba(255,255,255,.16);color:#fff;padding:0 24px;backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.35)}
+.btn-dark{background:var(--ink);color:#fff}
+.btn-dark .ic{background:var(--brand);color:#fff}
+
+/* HERO */
+.hero{position:relative;overflow:hidden;border-radius:var(--radius-xl);color:#fff;
+  background:radial-gradient(120% 90% at 85% 40%,#F9B65A 0%,var(--brand) 42%,var(--brand-deep) 100%);
+  min-height:720px;padding:28px 44px 48px;isolation:isolate}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.08),transparent 40%);z-index:-1}
+.rings{position:absolute;right:-180px;top:50%;transform:translateY(-46%);width:900px;height:900px;z-index:-1;pointer-events:none}
+.rings circle{fill:none}
+.nav{display:flex;align-items:center;gap:28px;position:relative;z-index:5}
+.nav .logo img{height:58px;width:auto}
+.nav ul{display:flex;gap:6px;list-style:none;margin-left:auto}
+.nav ul a{display:block;padding:10px 14px;border-radius:999px;font-weight:600;font-size:14px;opacity:.92;transition:background .2s}
+.nav ul a:hover{background:rgba(255,255,255,.16);opacity:1}
+.nav .phone{font-weight:800;font-size:16px;white-space:nowrap;display:flex;align-items:center;gap:10px;background:#fff;color:var(--brand-deep);padding:12px 20px;border-radius:999px}
+.burger{display:none;margin-left:auto;width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,.18)}
+.burger span{display:block;width:18px;height:2px;background:#fff;margin:4px auto;border-radius:2px}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:24px;align-items:center;margin-top:72px}
+.hero .cities{display:inline-flex;gap:10px;align-items:center;padding:8px 16px 8px 8px;border-radius:999px;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.3);font-weight:600;font-size:14px}
+.hero .cities b{background:#fff;color:var(--brand-deep);padding:4px 10px;border-radius:999px;font-size:12px;text-transform:uppercase;letter-spacing:.06em}
+.hero h1{font-size:clamp(38px,5.4vw,72px);margin:22px 0 22px;text-wrap:balance}
+.hero p.sub{font-size:19px;max-width:520px;opacity:.95}
+.hero .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:34px}
+.hero .ticks{display:flex;gap:22px;flex-wrap:wrap;margin-top:34px;font-weight:600}
+.hero .ticks span{display:flex;align-items:center;gap:8px}
+.hero .ticks svg{flex:none}
+.car-wrap{position:relative;aspect-ratio:1;display:grid;place-items:center}
+.car-wrap img{width:108%;max-width:none;filter:drop-shadow(0 30px 40px rgba(120,50,0,.35));animation:float 7s ease-in-out infinite}
+@keyframes float{50%{transform:translateY(-14px)}}
+.hero-badge{position:absolute;background:#fff;color:var(--ink);border-radius:22px;padding:16px 18px;box-shadow:0 20px 40px -18px rgba(80,30,0,.45);display:flex;gap:12px;align-items:center}
+.hero-badge .num{font-size:28px;font-weight:800;color:var(--brand)}
+.hero-badge small{display:block;color:var(--muted);font-size:13px;line-height:1.3}
+.hb1{left:-8%;bottom:16%}
+.hb2{right:0;top:6%}
+
+/* STATS */
+.block{padding:96px 40px}
+.center{text-align:center}
+.stats-title{max-width:760px;margin:0 auto 44px}
+.stats{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+.stat{background:var(--soft);border-radius:var(--radius-lg);padding:28px 22px;text-align:center;border:1px solid var(--line);transition:transform .25s,background .25s}
+.stat:hover{transform:translateY(-4px);background:#fff}
+.stat b{display:block;font-size:clamp(34px,3.6vw,46px);font-weight:800;letter-spacing:-.03em;line-height:1}
+.stat b em{font-style:normal;color:var(--brand)}
+.stat span{display:block;color:var(--muted);font-size:14px;margin-top:12px;line-height:1.35}
+.stat.accent{background:linear-gradient(160deg,var(--brand-2),var(--brand));border-color:transparent;color:#fff}
+.stat.accent b em,.stat.accent span{color:#fff}
+
+/* SERVICES */
+.split{display:grid;grid-template-columns:.8fr 2fr;gap:40px}
+.split .side{position:sticky;top:30px;align-self:start}
+.split .side h2{margin:16px 0 18px}
+.services{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.svc{position:relative;background:var(--soft);border:1px solid var(--line);border-radius:var(--radius-lg);padding:26px;min-height:260px;display:flex;flex-direction:column;transition:all .3s;overflow:hidden}
+.svc .icon{width:62px;height:62px;border-radius:18px;background:#fff;display:grid;place-items:center;color:var(--brand);box-shadow:0 6px 18px -8px rgba(232,134,42,.5)}
+.svc .arrow{position:absolute;right:18px;top:18px;width:42px;height:42px;border-radius:50%;background:#fff;display:grid;place-items:center;transition:all .3s}
+.svc small{color:var(--muted);font-size:13px;margin-top:auto;padding-top:28px}
+.svc h3{font-size:20px;margin-top:6px;line-height:1.2}
+.svc:hover{background:linear-gradient(160deg,var(--brand-2),var(--brand));color:#fff;border-color:transparent;transform:translateY(-4px)}
+.svc:hover small{color:rgba(255,255,255,.85)}
+.svc:hover .arrow{background:var(--ink);color:#fff;transform:rotate(45deg)}
+
+/* CASES */
+.cases-head{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:40px;flex-wrap:wrap}
+.cases-head .lead{max-width:440px}
+.cases{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.case{background:#fff;border-radius:var(--radius-lg);overflow:hidden;border:1px solid var(--line);display:flex;flex-direction:column}
+.case .ph{aspect-ratio:4/3;overflow:hidden;position:relative}
+.case .ph img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.case:hover .ph img{transform:scale(1.05)}
+.case .tag{position:absolute;left:14px;top:14px;background:rgba(255,255,255,.92);backdrop-filter:blur(6px);padding:6px 12px;border-radius:999px;font-size:12px;font-weight:700}
+.case .body{padding:22px;display:grid;gap:14px}
+.case .row{display:flex;justify-content:space-between;align-items:baseline;gap:10px;color:var(--muted);font-size:14px}
+.case .row s{font-weight:700;color:var(--ink);text-decoration-color:rgba(0,0,0,.35)}
+.case .win{background:linear-gradient(135deg,#FFF3E4,#FFE6CB);border-radius:16px;padding:16px 18px}
+.case .win small{display:block;color:var(--brand-deep);font-weight:600;font-size:13px}
+.case .win b{font-size:30px;font-weight:800;letter-spacing:-.02em;color:var(--ink)}
+.case .win b i{font-style:normal;color:var(--brand);font-size:20px;margin-left:4px}
+.case .x{display:inline-block;background:var(--ink);color:#fff;border-radius:999px;padding:4px 10px;font-size:12px;font-weight:700;margin-left:auto}
+
+/* CTA FORM */
+.cta{position:relative;overflow:hidden;border-radius:var(--radius-xl);background:radial-gradient(120% 120% at 0% 0%,#F9B65A,var(--brand) 45%,var(--brand-deep));color:#fff;padding:64px 56px;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;isolation:isolate}
+.cta .rings{left:-260px;right:auto;width:760px;height:760px;opacity:.9}
+.cta h2{font-size:clamp(30px,3.6vw,46px)}
+.cta p{opacity:.92;font-size:17px;margin-top:16px;max-width:460px}
+.form{background:#fff;color:var(--ink);border-radius:28px;padding:30px;display:grid;gap:14px;box-shadow:0 30px 60px -30px rgba(80,30,0,.5)}
+.form h3{font-size:22px}
+.seg{display:grid;grid-template-columns:1fr 1fr;background:var(--soft);border-radius:16px;padding:5px;border:1px solid var(--line)}
+.seg input{display:none}
+.seg label{text-align:center;padding:12px;border-radius:12px;font-weight:700;font-size:15px;cursor:pointer;color:var(--muted);transition:all .2s}
+.seg input:checked+label{background:#fff;color:var(--brand-deep);box-shadow:0 4px 12px -4px rgba(0,0,0,.15)}
+.field{height:56px;border-radius:16px;border:1px solid var(--line);background:var(--soft);padding:0 18px;font:inherit;font-size:16px;color:var(--ink);outline:none;transition:border .2s,background .2s;width:100%}
+.field:focus{border-color:var(--brand);background:#fff}
+.form .btn{justify-content:space-between;width:100%}
+.form .note{font-size:12px;color:var(--muted);text-align:center}
+.form .ok{display:none;background:#EAF7EE;color:#1E6B3A;border-radius:14px;padding:14px;font-weight:600;font-size:14px;text-align:center}
+
+/* STEPS */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;counter-reset:s}
+.step{background:var(--soft);border:1px solid var(--line);border-radius:var(--radius-lg);padding:28px;position:relative}
+.step .n{width:54px;height:54px;border-radius:50%;background:#fff;border:1px solid var(--line);display:grid;place-items:center;font-weight:800;font-size:18px;color:var(--brand)}
+.step h3{font-size:19px;margin:22px 0 10px;line-height:1.25}
+.step p,.step li{color:var(--muted);font-size:15px}
+.step ul{padding-left:18px;display:grid;gap:3px}
+.step.hl{background:var(--ink);color:#fff;border-color:transparent}
+.step.hl .n{background:var(--brand);border-color:transparent;color:#fff}
+.step.hl p{color:rgba(255,255,255,.75)}
+.step.hl strong{color:var(--brand-2)}
+
+/* WHY */
+.why{display:grid;grid-template-columns:1.1fr 1fr;gap:14px}
+.why .photo{border-radius:var(--radius-lg);overflow:hidden;position:relative;min-height:520px}
+.why .photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.why .photo .over{position:absolute;left:18px;right:18px;bottom:18px;background:rgba(255,255,255,.94);backdrop-filter:blur(8px);border-radius:20px;padding:20px 22px;display:flex;gap:16px;align-items:center}
+.why .photo .over b{font-size:40px;font-weight:800;color:var(--brand);line-height:1}
+.why .list{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.why .item{background:var(--soft);border:1px solid var(--line);border-radius:var(--radius-lg);padding:24px}
+.why .item svg{color:var(--brand)}
+.why .item h3{font-size:17px;margin-top:18px;line-height:1.3}
+.why .item p{color:var(--muted);font-size:14px;margin-top:6px}
+
+/* FOUNDERS */
+.founders{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.founder{background:var(--soft);border:1px solid var(--line);border-radius:var(--radius-lg);padding:14px;display:grid;grid-template-columns:220px 1fr;gap:24px}
+.founder .ava{border-radius:18px;overflow:hidden;background:linear-gradient(160deg,#FFE3C2,var(--brand-2));aspect-ratio:3/4}
+.founder .ava img{width:100%;height:100%;object-fit:cover;object-position:top}
+.founder .info{padding:12px 10px 12px 0}
+.founder .role{font-size:13px;font-weight:700;color:var(--brand-deep);text-transform:uppercase;letter-spacing:.06em}
+.founder h3{font-size:26px;margin:8px 0 10px}
+.founder .desc{color:var(--ink);font-weight:600;font-size:15px}
+.founder ul{list-style:none;margin-top:16px;display:grid;gap:8px}
+.founder li{color:var(--muted);font-size:14px;padding-left:22px;position:relative}
+.founder li::before{content:"";position:absolute;left:0;top:7px;width:10px;height:10px;border-radius:3px;background:var(--brand);transform:rotate(45deg)}
+
+/* REVIEWS */
+.rating{display:flex;align-items:center;gap:16px;background:#fff;border:1px solid var(--line);border-radius:999px;padding:10px 22px 10px 10px}
+.rating b{font-size:28px;font-weight:800;background:var(--brand);color:#fff;border-radius:999px;padding:6px 16px}
+.stars{color:var(--brand);letter-spacing:2px}
+.reviews{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:10px;scrollbar-width:thin}
+.review{flex:0 0 380px;scroll-snap-align:start;background:#fff;border:1px solid var(--line);border-radius:var(--radius-lg);padding:26px;display:flex;flex-direction:column;gap:16px}
+.review p{font-size:15px;color:#3b3631}
+.review .who{margin-top:auto;display:flex;align-items:center;gap:12px;padding-top:12px;border-top:1px solid var(--line)}
+.review .av{width:44px;height:44px;border-radius:50%;background:linear-gradient(160deg,var(--brand-2),var(--brand));color:#fff;display:grid;place-items:center;font-weight:800}
+.review .who small{display:block;color:var(--muted);font-size:13px}
+.rev-nav{display:flex;gap:8px}
+.rev-nav button{width:52px;height:52px;border-radius:50%;background:#fff;border:1px solid var(--line);display:grid;place-items:center;transition:all .2s}
+.rev-nav button:hover{background:var(--brand);color:#fff;border-color:var(--brand)}
+
+/* FAQ */
+.faq{display:grid;gap:10px}
+.faq details{background:var(--soft);border:1px solid var(--line);border-radius:22px;padding:0 26px;transition:background .2s}
+.faq details[open]{background:#fff}
+.faq summary{list-style:none;cursor:pointer;padding:24px 0;font-weight:700;font-size:18px;display:flex;justify-content:space-between;gap:20px;align-items:center}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary i{flex:none;width:36px;height:36px;border-radius:50%;background:#fff;border:1px solid var(--line);display:grid;place-items:center;font-style:normal;transition:transform .25s,background .2s;color:var(--brand)}
+.faq details[open] summary i{transform:rotate(45deg);background:var(--brand);color:#fff;border-color:var(--brand)}
+.faq .ans{padding:0 0 24px;color:var(--muted);display:grid;gap:10px;max-width:860px}
+.faq .ans ul{padding-left:20px;display:grid;gap:4px}
+
+/* CONTACTS */
+.contacts{display:grid;grid-template-columns:1fr 1.3fr;gap:14px}
+.c-main{background:var(--ink);color:#fff;border-radius:var(--radius-lg);padding:36px;display:flex;flex-direction:column;gap:22px;position:relative;overflow:hidden}
+.c-main .big{font-size:clamp(28px,3vw,38px);font-weight:800;letter-spacing:-.02em}
+.c-main small{color:rgba(255,255,255,.6);font-size:13px;display:block;margin-bottom:4px}
+.c-main a:hover{color:var(--brand-2)}
+.c-main .btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:auto}
+.offices{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.office{background:var(--soft);border:1px solid var(--line);border-radius:var(--radius-lg);padding:24px;display:flex;flex-direction:column;gap:12px}
+.office .city{font-size:22px;font-weight:800}
+.office .pin{width:46px;height:46px;border-radius:14px;background:#fff;display:grid;place-items:center;color:var(--brand)}
+.office p{color:var(--muted);font-size:14px}
+
+/* FOOTER */
+footer{padding:44px 40px 28px;display:grid;gap:30px}
+.f-top{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap;align-items:flex-start}
+.f-top img{height:64px;width:auto}
+.f-links{display:flex;flex-wrap:wrap;gap:8px;max-width:760px}
+.f-links a{padding:8px 14px;border-radius:999px;background:var(--soft);border:1px solid var(--line);font-size:13px;font-weight:600;color:var(--muted);transition:all .2s}
+.f-links a:hover{color:var(--brand-deep);border-color:var(--brand)}
+.f-bot{display:flex;justify-content:space-between;color:var(--muted);font-size:13px;border-top:1px solid var(--line);padding-top:22px;flex-wrap:wrap;gap:10px}
+
+/* floating */
+.fab{position:fixed;right:20px;bottom:20px;z-index:50;width:60px;height:60px;border-radius:50%;background:#25D366;color:#fff;display:grid;place-items:center;box-shadow:0 14px 30px -10px rgba(37,211,102,.7)}
+.fab::after{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid #25D366;animation:pulse 2s infinite}
+@keyframes pulse{to{transform:scale(1.5);opacity:0}}
+
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+
+/* mobile menu */
+.mnav{position:fixed;inset:0;background:var(--brand);z-index:100;padding:24px;display:none;flex-direction:column;gap:6px;color:#fff}
+.mnav.open{display:flex}
+.mnav a{font-size:26px;font-weight:800;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.2)}
+.mnav .close{align-self:flex-end;width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,.2);font-size:24px;color:#fff;margin-bottom:20px}
+
+@media (max-width:1100px){
+  .nav ul{display:none}
+  .nav .phone{margin-left:auto}
+  .stats{grid-template-columns:repeat(3,1fr)}
+  .split{grid-template-columns:1fr}
+  .split .side{position:static}
+  .why{grid-template-columns:1fr}
+  .founders{grid-template-columns:1fr}
+  .contacts{grid-template-columns:1fr}
+}
+@media (max-width:860px){
+  .hero{padding:20px 20px 36px;min-height:0}
+  .hero-grid{grid-template-columns:1fr;margin-top:40px}
+  .car-wrap{max-width:420px;margin:10px auto 0;width:100%}
+  .hb1{left:0}
+  .rings{width:620px;height:620px;right:-260px;top:auto;bottom:-200px;transform:none}
+  .nav .phone{display:none}
+  .burger{display:block}
+  .nav .logo img{height:46px}
+  .block{padding:64px 16px}
+  .services,.cases,.steps{grid-template-columns:1fr 1fr}
+  .cta{grid-template-columns:1fr;padding:40px 22px;gap:30px}
+  .offices{grid-template-columns:1fr}
+  footer{padding:36px 16px 24px}
+}
+@media (max-width:600px){
+  .wrap{padding:8px}
+  .shell{padding:6px;border-radius:30px}
+  .hero,.cta{border-radius:26px}
+  .stats,.services,.cases,.steps,.why .list{grid-template-columns:1fr}
+  .stat.wide{grid-column:auto}
+  .founder{grid-template-columns:1fr}
+  .founder .ava{aspect-ratio:1}
+  .founder .info{padding:4px 8px 10px}
+  .review{flex-basis:86%}
+  .btn{height:52px}
+  .hero .actions .btn{flex:1;justify-content:space-between}
+  .hero .actions .btn-ghost{justify-content:center}
+  .hero-badge{padding:12px 14px}
+  .hero-badge .num{font-size:22px}
+  .why .photo{min-height:420px}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="arrow" viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="check" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="rgba(255,255,255,.22)"/><path d="m7 12.5 3.2 3L17 9" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="wa" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3Z"/></symbol>
+    <symbol id="phone" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></symbol>
+    <symbol id="pin" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
+    <symbol id="ring-set" viewBox="0 0 900 900">
+      <g fill="none" stroke="rgba(255,255,255,.22)">
+        <circle cx="450" cy="450" r="430" stroke-width="2"/>
+        <circle cx="450" cy="450" r="360" stroke-width="44" stroke="rgba(255,255,255,.07)"/>
+        <circle cx="450" cy="450" r="290" stroke-width="2"/>
+        <circle cx="450" cy="450" r="225" stroke-width="38" stroke="rgba(255,255,255,.09)"/>
+        <circle cx="450" cy="450" r="160" stroke-width="2"/>
+        <circle cx="450" cy="450" r="100" stroke-width="30" stroke="rgba(255,255,255,.1)"/>
+      </g>
+    </symbol>
+  </defs>
+</svg>
+
+<div class="wrap">
+<div class="shell">
+
+  <!-- HERO -->
+  <header class="hero" id="top">
+    <svg class="rings" aria-hidden="true"><use href="#ring-set"/></svg>
+    <nav class="nav">
+      <a href="#top" class="logo"><img src="assets/logo-white.png" alt="Авто-Лига"></a>
+      <ul>
+        <li><a href="#services">Услуги</a></li>
+        <li><a href="#advantages">Преимущества</a></li>
+        <li><a href="#cases">Кейсы</a></li>
+        <li><a href="#steps">Этапы</a></li>
+        <li><a href="#founders">Учредители</a></li>
+        <li><a href="#reviews">Отзывы</a></li>
+        <li><a href="#contacts">Контакты</a></li>
+      </ul>
+      <a class="phone" href="tel:+77710401010"><svg width="18" height="18"><use href="#phone"/></svg>+7 771 040 10 10</a>
+      <button class="burger" aria-label="Меню" onclick="menu(true)"><span></span><span></span><span></span></button>
+    </nav>
+
+    <div class="hero-grid">
+      <div>
+        <div class="cities"><b>Автоюристы</b> Астана · Караганда · Алматы</div>
+        <h1>Решаем юридические и страховые вопросы по ДТП</h1>
+        <p class="sub">Попали в ДТП и не знаете, что делать? Возьмём на себя все юридические, страховые и судебные вопросы — от места аварии до выплаты.</p>
+        <div class="actions">
+          <a class="btn btn-white" href="#lead">Консультация бесплатно <span class="ic"><svg width="18" height="18"><use href="#arrow"/></svg></span></a>
+          <a class="btn btn-ghost" href="https://wa.me/77710401010" target="_blank" rel="noopener"><svg width="20" height="20"><use href="#wa"/></svg>WhatsApp</a>
+        </div>
+        <div class="ticks">
+          <span><svg width="22" height="22"><use href="#check"/></svg>Работаем без предоплаты</span>
+          <span><svg width="22" height="22"><use href="#check"/></svg>Делаем независимую оценку</span>
+        </div>
+      </div>
+      <div class="car-wrap">
+        <img src="assets/car-white.png" alt="">
+        <div class="hero-badge hb1"><span class="num">+40%</span><small>к выплате, в среднем,<br>чем считает страховая</small></div>
+        <div class="hero-badge hb2"><span class="num">0 ₸</span><small>предоплаты —<br>оплата по факту</small></div>
+      </div>
+    </div>
+  </header>
+
+  <!-- STATS -->
+  <section class="block" id="advantages">
+    <div class="center stats-title reveal">
+      <span class="eyebrow">Почему Авто-Лига</span>
+      <h2 style="margin-top:14px">Добиваемся максимальной выплаты по закону</h2>
+    </div>
+    <div class="stats reveal">
+      <div class="stat accent"><b><em>40%</em>+</b><span>больше выплат, чем считают страховые компании</span></div>
+      <div class="stat"><b><em>70</em>%</b><span>выплат в ускоренном режиме — без суда</span></div>
+      <div class="stat"><b>14 500</b><span>довольных клиентов</span></div>
+      <div class="stat"><b>30</b><span>сотрудников в штате компании</span></div>
+      <div class="stat"><b>10<em>+</em></b><span>лет опыта работы</span></div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="block" id="services" style="padding-top:0">
+    <div class="split">
+      <div class="side reveal">
+        <span class="eyebrow">Что мы предлагаем</span>
+        <h2>Полный спектр услуг для участников ДТП</h2>
+        <p class="lead">Выигрываем суды, даже если у виновника нет страховки. Первичная консультация юриста — бесплатно.</p>
+        <a class="btn btn-brand" href="#lead" style="margin-top:28px">Получить консультацию <span class="ic"><svg width="18" height="18"><use href="#arrow"/></svg></span></a>
+      </div>
+      <div class="services">
+        <a href="#lead" class="svc reveal"><span class="arrow"><svg width="18" height="18"><use href="#arrow"/></svg></span>
+          <span class="icon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-4"/></svg></span>
+          <small>Без предоплат</small><h3>Сопровождение страховых выплат</h3></a>
+        <a href="#lead" class="svc reveal"><span class="arrow"><svg width="18" height="18"><use href="#arrow"/></svg></span>
+          <span class="icon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m14 13-7.5 7.5a2.1 2.1 0 0 1-3-3L11 10"/><path d="m16 16 6-6M8 8l6-6M9 7l8 8M21 11l-8-8"/></svg></span>
+          <small>Автоадвокат</small><h3>Возмещение ущерба через суд</h3></a>
+        <a href="#lead" class="svc reveal"><span class="arrow"><svg width="18" height="18"><use href="#arrow"/></svg></span>
+          <span class="icon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.8-3.8a6 6 0 0 1-7.9 7.9l-6.9 6.9a2.1 2.1 0 0 1-3-3l6.9-6.9a6 6 0 0 1 7.9-7.9l-3.8 3.8Z"/></svg></span>
+          <small>Ремонт</small><h3>Кузовной центр и СТО</h3></a>
+        <a href="#lead" class="svc reveal"><span class="arrow"><svg width="18" height="18"><use href="#arrow"/></svg></span>
+          <span class="icon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2Z"/><path d="M8 9h8M8 13h5"/></svg></span>
+          <small>Бесплатно</small><h3>Юридическая консультация</h3></a>
+        <a href="#lead" class="svc reveal"><span class="arrow"><svg width="18" height="18"><use href="#arrow"/></svg></span>
+          <span class="icon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11H5a2 2 0 0 0-2 2v7h18v-7a2 2 0 0 0-2-2h-4"/><rect x="9" y="3" width="6" height="10" rx="1"/><path d="M12 7h.01"/></svg></span>
+          <small>Оценка и экспертиза</small><h3>Независимая оценка и автоадвокат</h3></a>
+        <a href="#lead" class="svc reveal"><span class="arrow"><svg width="18" height="18"><use href="#arrow"/></svg></span>
+          <span class="icon"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6M9 15l2 2 4-4"/></svg></span>
+          <small>ОГПО и КАСКО</small><h3>Техосмотр и страхование</h3></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CASES -->
+  <section class="block" id="cases" style="background:var(--soft);border-radius:var(--radius-xl)">
+    <div class="cases-head reveal">
+      <div><span class="eyebrow">Кейсы</span><h2 style="margin-top:14px;max-width:640px">Реальные выплаты наших клиентов</h2></div>
+      <p class="lead">Наши клиенты получают, в среднем, на 40% больше страховых выплат при работе с нами.</p>
+    </div>
+    <div class="cases">
+      <article class="case reveal"><div class="ph"><img src="assets/case1.jpg" alt="Повреждённый автомобиль клиента" loading="lazy"><span class="tag">Кейс 01</span></div>
+        <div class="body"><div class="row">Страховая оценила <s>126 965 ₸</s></div>
+        <div class="win"><small>Мы дополнительно добились со страховой</small><b>1 526 457<i>₸</i></b></div></div></article>
+      <article class="case reveal"><div class="ph"><img src="assets/case2.jpg" alt="Повреждённый автомобиль клиента" loading="lazy"><span class="tag">Кейс 02</span></div>
+        <div class="body"><div class="row">Без обращения в страховую <span class="x">с нуля</span></div>
+        <div class="win"><small>Мы дополнительно добились со страховой</small><b>1 361 300<i>₸</i></b></div></div></article>
+      <article class="case reveal"><div class="ph"><img src="assets/case3.jpg" alt="Повреждённый автомобиль клиента" loading="lazy"><span class="tag">Кейс 03</span></div>
+        <div class="body"><div class="row">Страховая оценила <s>1 137 790 ₸</s></div>
+        <div class="win"><small>Мы дополнительно добились со страховой</small><b>2 215 200<i>₸</i></b></div></div></article>
+      <article class="case reveal"><div class="ph"><img src="assets/case4.jpg" alt="Повреждённый автомобиль клиента" loading="lazy"><span class="tag">Кейс 04</span></div>
+        <div class="body"><div class="row">Страховая оценила <s>474 961 ₸</s></div>
+        <div class="win"><small>Мы дополнительно добились со страховой</small><b>1 606 278<i>₸</i></b></div></div></article>
+      <article class="case reveal"><div class="ph"><img src="assets/case5.jpg" alt="Повреждённый автомобиль клиента" loading="lazy"><span class="tag">Кейс 05</span></div>
+        <div class="body"><div class="row">Первично добились <s style="text-decoration:none">1 674 668 ₸</s></div>
+        <div class="win"><small>Мы дополнительно добились со страховой</small><b>2 084 083<i>₸</i></b></div></div></article>
+      <article class="case reveal"><div class="ph"><img src="assets/case6.jpg" alt="Повреждённый автомобиль клиента" loading="lazy"><span class="tag">Кейс 06</span></div>
+        <div class="body"><div class="row">Посчитала страховая без нас <s>476 783 ₸</s></div>
+        <div class="win"><small>Мы добились со страховой</small><b>2 130 678<i>₸</i></b></div></div></article>
+    </div>
+  </section>
+
+  <!-- CTA / FORM -->
+  <section class="block" id="lead">
+    <div class="cta reveal">
+      <svg class="rings" aria-hidden="true"><use href="#ring-set"/></svg>
+      <div>
+        <span class="eyebrow" style="color:#fff">Бесплатно</span>
+        <h2 style="margin-top:14px">Не теряйте время — получите консультацию юриста</h2>
+        <p>Оставьте заявку: наши оценщики бесплатно посчитают примерный ущерб и расскажут, как получить максимальную страховую выплату.</p>
+        <div class="ticks" style="display:flex;gap:20px;flex-wrap:wrap;margin-top:28px;font-weight:600">
+          <span style="display:flex;gap:8px;align-items:center"><svg width="22" height="22"><use href="#check"/></svg>Ответим за 15 минут</span>
+          <span style="display:flex;gap:8px;align-items:center"><svg width="22" height="22"><use href="#check"/></svg>Без предоплаты</span>
+        </div>
+      </div>
+      <form class="form" id="leadForm" novalidate>
+        <h3>Перезвоните мне, я попал в ДТП</h3>
+        <div class="seg" role="radiogroup" aria-label="Ваша роль в ДТП">
+          <input type="radio" name="role" id="r1" value="Пострадавший" checked><label for="r1">Пострадавший</label>
+          <input type="radio" name="role" id="r2" value="Виновник"><label for="r2">Виновник</label>
+        </div>
+        <input class="field" name="name" placeholder="Имя и фамилия" autocomplete="name" required>
+        <input class="field" name="phone" type="tel" placeholder="+7 (___) ___-__-__" autocomplete="tel" required>
+        <button class="btn btn-brand" type="submit">Отправить заявку <span class="ic"><svg width="18" height="18"><use href="#arrow"/></svg></span></button>
+        <div class="ok" id="formOk">Спасибо! Открываем WhatsApp — отправьте сообщение, и юрист свяжется с вами.</div>
+        <p class="note">Нажимая кнопку, вы соглашаетесь на обработку персональных данных</p>
+      </form>
+    </div>
+  </section>
+
+  <!-- STEPS -->
+  <section class="block" id="steps" style="padding-top:0">
+    <div class="cases-head reveal">
+      <div><span class="eyebrow">Этапы</span><h2 style="margin-top:14px;max-width:640px">Что делать, когда попал в ДТП?</h2></div>
+      <p class="lead">Главное — <b style="color:var(--ink)">ни в коем случае не трогаться с места ДТП</b>. Дальше всё возьмём на себя.</p>
+    </div>
+    <div class="steps">
+      <div class="step reveal"><span class="n">01</span><h3>Звоните нам и укажите:</h3>
+        <ul><li>ФИО</li><li>марку, модель и год выпуска машины</li><li>страховую компанию виновника</li><li>адрес аварии</li><li>примерное описание повреждений</li></ul></div>
+      <div class="step reveal"><span class="n">02</span><h3>Аварийный комиссар бесплатно приедет на место ДТП</h3>
+        <p>Вызовет патрульную полицию и скорую (при необходимости), оценит ущерб, предварительно определит виновника и примет весь стресс на себя.</p></div>
+      <div class="step reveal"><span class="n">03</span><h3>Договор и доверенность</h3>
+        <p>В офисе заключаем договор, вы подписываете доверенность — и мы представляем ваши интересы в страховой и суде, избавляя от «подводных камней».</p></div>
+      <div class="step reveal"><span class="n">04</span><h3>Оценка ущерба на СТО или у дилера</h3>
+        <p>Организуем оценку со страховой. Если вероятны скрытые повреждения — осмотрим авто на нашем СТО. От качества осмотра зависит сумма ущерба.</p></div>
+      <div class="step reveal"><span class="n">05</span><h3>Спор со страховой без суда</h3>
+        <p>Если в расчёте есть упущения или нарушения — оспариваем с обоснованием и ссылками на законы. В большинстве случаев споры решаются без суда.</p></div>
+      <div class="step hl reveal"><span class="n">06</span><h3>Максимальная выплата и оплата услуг</h3>
+        <p>Выплата поступает в течение 15 рабочих дней. Вы оплачиваете наши услуги из полученной суммы — <strong>10% от возмещённого ущерба</strong>. Мы мотивированы на максимум.</p></div>
+    </div>
+    <div class="center reveal" style="margin-top:36px">
+      <a class="btn btn-dark" href="tel:+77710401010">Вызвать аварийного комиссара бесплатно <span class="ic"><svg width="18" height="18"><use href="#phone"/></svg></span></a>
+    </div>
+  </section>
+
+  <!-- WHY -->
+  <section class="block" style="padding-top:0">
+    <div class="why">
+      <div class="photo reveal">
+        <img src="assets/expert.jpg" alt="Эксперт оценивает повреждения автомобиля" loading="lazy">
+        <div class="over"><b>10%</b><div><strong>Оплата только по результату</strong><p style="color:var(--muted);font-size:14px">от возмещённого ущерба, после получения выплаты</p></div></div>
+      </div>
+      <div>
+        <div class="reveal" style="margin:10px 0 28px"><span class="eyebrow">Почему выбирают нас</span><h2 style="margin-top:14px">Страховая занизила выплату? Мы это исправим</h2></div>
+        <div class="list">
+          <div class="item reveal"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M15 9.5a3 3 0 0 0-3-1.5c-1.7 0-3 .9-3 2s1.3 1.7 3 2 3 .9 3 2-1.3 2-3 2a3 3 0 0 1-3-1.5M12 6v2M12 16v2"/></svg><h3>Без предоплаты</h3><p>Платите только после получения выплаты</p></div>
+          <div class="item reveal"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17 9 11l4 4 8-8M14 7h7v7"/></svg><h3>Максимальные компенсации</h3><p>Добиваемся полной суммы строго по закону</p></div>
+          <div class="item reveal"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.9M16 3.1a4 4 0 0 1 0 7.8"/></svg><h3>Большой штат экспертов</h3><p>Опытные юристы, оценщики и автоадвокаты</p></div>
+          <div class="item reveal"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2Z"/></svg><h3>Бесплатная консультация</h3><p>Первичная консультация юриста — 0 ₸</p></div>
+          <div class="item reveal"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M8 6h8M8 10h.01M12 10h.01M16 10h.01M8 14h.01M12 14h.01M16 14h.01M8 18h8"/></svg><h3>Бесплатный расчёт ущерба</h3><p>Оценщики посчитают примерную сумму</p></div>
+          <div class="item reveal"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21.2l8.8-8.8a5.5 5.5 0 0 0 0-7.8Z"/></svg><h3>Индивидуальный подход</h3><p>Ведём каждое дело персонально</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOUNDERS -->
+  <section class="block" id="founders" style="padding-top:0">
+    <div class="center reveal" style="margin-bottom:40px"><span class="eyebrow">Учредители</span><h2 style="margin-top:14px">Кто стоит за Авто-Лигой</h2></div>
+    <div class="founders">
+      <article class="founder reveal">
+        <div class="ava"><img src="assets/founder-abai.png" alt="Абай Кайпжанов" loading="lazy"></div>
+        <div class="info">
+          <span class="role">Со-основатель</span>
+          <h3>Абай Кайпжанов</h3>
+          <p class="desc">Квалифицированный юрист-практик с 5-летним опытом юридического сопровождения дел ДТП.</p>
+          <ul>
+            <li>Более 800 выигранных дел в гражданском суде</li>
+            <li>Около 1 000 дел выиграны в административном суде</li>
+            <li>5 лет опыта работы в ОВД</li>
+            <li>8 лет в юридическом отделе крупной недропользующей компании</li>
+            <li>Член Палаты юридических консультантов г. Астана</li>
+          </ul>
+        </div>
+      </article>
+      <article class="founder reveal">
+        <div class="ava"><img src="assets/founder-zhanat.png" alt="Жанат Байдавлетов" loading="lazy"></div>
+        <div class="info">
+          <span class="role">Со-основатель</span>
+          <h3>Жанат Байдавлетов</h3>
+          <p class="desc">Сертифицированный независимый оценщик и практикующий юрист с 10-летним опытом сопровождения страховых выплат.</p>
+          <ul>
+            <li>5 лет управленцем в крупной страховой компании</li>
+            <li>В 2014 году основал первый офис «Авто-Лига» в Магнитогорске, в 2015 — два филиала</li>
+            <li>В 2018 году компания вышла на рынок Казахстана</li>
+            <li>Член Палаты юридических консультантов г. Астана</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section class="block" id="reviews" style="background:var(--soft);border-radius:var(--radius-xl)">
+    <div class="cases-head reveal">
+      <div><span class="eyebrow">Отзывы</span><h2 style="margin-top:14px">Что говорят клиенты</h2></div>
+      <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap">
+        <a class="rating" href="https://2gis.kz/astana/firm/70000001037549161/tab/reviews" target="_blank" rel="noopener"><b>4.7</b><div><div class="stars">★★★★★</div><small style="color:var(--muted)">Все отзывы на 2GIS →</small></div></a>
+        <div class="rev-nav"><button aria-label="Назад" onclick="rev(-1)"><svg width="18" height="18" style="transform:rotate(-135deg)"><use href="#arrow"/></svg></button><button aria-label="Вперёд" onclick="rev(1)"><svg width="18" height="18" style="transform:rotate(45deg)"><use href="#arrow"/></svg></button></div>
+      </div>
+    </div>
+    <div class="reviews" id="reviewsTrack">
+      <article class="review"><div class="stars">★★★★★</div><p>Хорошая компания с грамотными сотрудниками! Всё для удобства клиента. Страховая компания оценила ущерб в 129 тыс, Авто-Лига выбила 1 500 000 тг. Теперь всем знакомым, кто попал в ДТП, с уверенностью советую данную компанию.</p><div class="who"><span class="av">П</span><div><b>Перизат Тукенова</b><small>4 ноября 2024 · 2GIS</small></div></div></article>
+      <article class="review"><div class="stars">★★★★★</div><p>Жарайсыңдар жігіттер. Рахмет. Өздері хабарласып айтып отырады екен бәрін. Қанша түсті, қанша шығарып береміз деп. Ешқандай еш жерге жүгірген жоқпын, рахмет.</p><div class="who"><span class="av">Б</span><div><b>Бекболат Уктамов</b><small>9 ноября 2024 · 2GIS</small></div></div></article>
+      <article class="review"><div class="stars">★★★★★</div><p>Благодарю компанию Авто-Лига за профессиональную помощь, рада, что обратилась именно сюда. Решили быстро, хотя предупреждали о возможной двухмесячной длительности ведения дела. Отдельно благодарю Зарину, Алишера и Бекзата.</p><div class="who"><span class="av">А</span><div><b>Алия Жуматаева</b><small>10 ноября 2024 · 2GIS</small></div></div></article>
+      <article class="review"><div class="stars">★★★★★</div><p>Страховая прислала очень заниженную оценку, а после претензии — отказ. Друзья посоветовали обратиться в Авто-Лигу. Ребята сами оценили и добились выплаты, а потом через омбудсмена ещё и дополнительно. Всем советую не терять нервы и время, а сразу обращаться к профессионалам.</p><div class="who"><span class="av">Е</span><div><b>Еркен Кадыров</b><small>9 августа 2024 · 2GIS</small></div></div></article>
+      <article class="review"><div class="stars">★★★★★</div><p>Толковые сотрудники, знают своё дело. Сэкономил кучу времени и нервов! Приехал всего один раз на оценку. Оплату получил в срок, даже больше, чем рассчитывал! Молодцы, буду рекомендовать вас!</p><div class="who"><span class="av">Е</span><div><b>Ердос Максутов</b><small>1 августа 2024 · 2GIS</small></div></div></article>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="block" style="padding-bottom:40px">
+    <div class="split">
+      <div class="side reveal"><span class="eyebrow">Об ОГПО</span><h2>Как получить полную выплату по ОГПО</h2><p class="lead">По статистике, выплаты по ОГПО в Казахстане занижаются в среднем на 40%.</p></div>
+      <div class="faq">
+        <details class="reveal" open><summary>Почему страховые выплаты часто занижены? <i>+</i></summary><div class="ans">
+          <p>Страховые компании — коммерческие организации, их цель — минимизировать расходы. Поэтому при расчёте ущерба часто:</p>
+          <ul><li>игнорируются скрытые повреждения;</li><li>применяются заниженные расценки;</li><li>учитываются детали-дубликаты вместо оригиналов.</li></ul>
+          <p>Большинство пострадавших соглашаются с расчётами страховой, не подозревая о нарушениях своих прав.</p></div></details>
+        <details class="reveal"><summary>Что такое ОГПО и что оно покрывает? <i>+</i></summary><div class="ans">
+          <p>По законодательству РК каждый автовладелец обязан ежегодно оформлять обязательное страхование гражданско-правовой ответственности владельцев транспортных средств (ОГПО ВТС). Оно покрывает ущерб, причинённый третьим лицам в ДТП.</p>
+          <p>Самостоятельно добиться полной выплаты сложно — особенно без знания юридических тонкостей и доказательной базы.</p></div></details>
+        <details class="reveal"><summary>Какие услуги вы оказываете? <i>+</i></summary><div class="ans">
+          <ul>
+            <li><b>Консультация автоюриста</b> — анализ ситуации, переговоры со страховой или виновником, защита интересов до выплаты.</li>
+            <li><b>Автоадвокат в суде</b> — страховые споры, споры с органами ДВД, дела о лишении прав, обжалование отказов.</li>
+            <li><b>Бесплатный выезд аварийного комиссара</b> — правильная фиксация всех обстоятельств ДТП.</li>
+            <li><b>Независимая автооценка</b> — расчёт ущерба и УТС, заключение для суда или страховой.</li>
+            <li><b>Независимая техническая экспертиза</b> — причины ДТП, неисправности, производственный брак.</li>
+          </ul></div></details>
+        <details class="reveal"><summary>Когда нужно обращаться к автоюристу? <i>+</i></summary><div class="ans">
+          <p><b>Сразу после аварии.</b> Это позволит:</p>
+          <ul><li>избежать критических ошибок: не покидать место ДТП, не подписывать непроверенные документы, не брать деньги без оснований;</li><li>корректно зафиксировать все обстоятельства;</li><li>правильно задокументировать обещания виновника;</li><li>не дать страховой занизить сумму компенсации.</li></ul></div></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTS -->
+  <section class="block" id="contacts" style="padding-top:40px">
+    <div class="reveal" style="margin-bottom:36px"><span class="eyebrow">Контакты</span><h2 style="margin-top:14px">Мы на связи 24/7</h2></div>
+    <div class="contacts">
+      <div class="c-main reveal">
+        <svg class="rings" aria-hidden="true" style="right:-420px;width:700px;height:700px;opacity:.5"><use href="#ring-set"/></svg>
+        <div><small>Единый номер для всех городов</small><a class="big" href="tel:+77710401010">+7 771 040 10 10</a></div>
+        <div><small>Электронная почта</small><a href="mailto:autoligadtp@gmail.com" style="font-weight:700;font-size:18px">autoligadtp@gmail.com</a></div>
+        <div><small>Instagram</small><a href="https://instagram.com/autoligadtp/" target="_blank" rel="noopener" style="font-weight:700;font-size:18px">@autoligadtp</a></div>
+        <div class="btns">
+          <a class="btn btn-brand" href="tel:+77710401010">Позвонить <span class="ic"><svg width="18" height="18"><use href="#phone"/></svg></span></a>
+          <a class="btn" style="background:#25D366;color:#fff;padding:0 24px" href="https://wa.me/77710401010" target="_blank" rel="noopener"><svg width="20" height="20"><use href="#wa"/></svg>WhatsApp</a>
+        </div>
+      </div>
+      <div class="offices">
+        <div class="office reveal"><span class="pin"><svg width="22" height="22"><use href="#pin"/></svg></span><span class="city">Астана</span><p>Район Сарыарка, ул. Сабита Муканова 4, этаж 2, офис 1</p></div>
+        <div class="office reveal"><span class="pin"><svg width="22" height="22"><use href="#pin"/></svg></span><span class="city">Караганда</span><p>Пр. Нурсултан Назарбаев 33/3, БЦ «Премьер», этаж 1, офис 110</p></div>
+        <div class="office reveal"><span class="pin"><svg width="22" height="22"><use href="#pin"/></svg></span><span class="city">Алматы</span><p>Район Медеу, ул. Поганина 15, этаж 1, офис 1</p></div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="f-top">
+      <img src="assets/logo-gold.png" alt="Авто-Лига">
+      <nav class="f-links">
+        <a href="#services">Автоюрист</a><a href="#services">Автоадвокат</a><a href="#steps">Аварийный комиссар</a><a href="#services">Независимая оценка</a><a href="#services">Независимая экспертиза</a><a href="#steps">Попал в ДТП</a><a href="#lead">Я виновник ДТП</a><a href="#lead">Виновник скрылся с места ДТП</a><a href="#lead">Пострадавший в ДТП</a><a href="#cases">Страховые выплаты по ДТП</a><a href="#cases">Ущерб ДТП</a><a href="#lead">Штраф ДТП</a>
+      </nav>
+    </div>
+    <div class="f-bot"><span>© Авто-Лига, автоюристы по ДТП</span><span>Астана · Караганда · Алматы</span></div>
+  </footer>
+
+</div>
+</div>
+
+<a class="fab" href="https://wa.me/77710401010" target="_blank" rel="noopener" aria-label="Написать в WhatsApp"><svg width="30" height="30"><use href="#wa"/></svg></a>
+
+<div class="mnav" id="mnav">
+  <button class="close" aria-label="Закрыть" onclick="menu(false)">×</button>
+  <a href="#services">Услуги</a><a href="#advantages">Преимущества</a><a href="#cases">Кейсы</a><a href="#steps">Этапы</a><a href="#founders">Учредители</a><a href="#reviews">Отзывы</a><a href="#contacts">Контакты</a>
+  <a href="tel:+77710401010" style="border:0;margin-top:auto">+7 771 040 10 10</a>
+</div>
+
+<script>
+function menu(o){document.getElementById('mnav').classList.toggle('open',o);document.body.style.overflow=o?'hidden':''}
+document.querySelectorAll('#mnav a').forEach(a=>a.addEventListener('click',()=>menu(false)));
+
+function rev(d){const t=document.getElementById('reviewsTrack');t.scrollBy({left:d*(t.firstElementChild.offsetWidth+14),behavior:'smooth'})}
+
+// появление блоков при скролле
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+// маска телефона KZ
+const ph=document.querySelector('input[name=phone]');
+ph.addEventListener('input',()=>{
+  let d=ph.value.replace(/\D/g,'');if(d.startsWith('8'))d='7'+d.slice(1);if(!d.startsWith('7'))d='7'+d;d=d.slice(0,11);
+  const p=[d.slice(1,4),d.slice(4,7),d.slice(7,9),d.slice(9,11)];
+  ph.value='+7'+(p[0]?' ('+p[0]:'')+(p[0].length===3?')':'')+(p[1]?' '+p[1]:'')+(p[2]?'-'+p[2]:'')+(p[3]?'-'+p[3]:'');
+});
+
+// заявка: отправляется в WhatsApp компании (подключите свой обработчик/CRM при необходимости)
+document.getElementById('leadForm').addEventListener('submit',e=>{
+  e.preventDefault();const f=e.target;
+  const name=f.name.value.trim(),phone=f.phone.value.replace(/\D/g,'');
+  f.name.style.borderColor=name?'':'#E5484D';f.phone.style.borderColor=phone.length===11?'':'#E5484D';
+  if(!name||phone.length!==11)return;
+  const msg=`Здравствуйте! Я попал в ДТП (${f.role.value}). ${name}, +${phone}. Нужна консультация.`;
+  document.getElementById('formOk').style.display='block';
+  window.open('https://wa.me/77710401010?text='+encodeURIComponent(msg),'_blank');
+});
+</script>
+</body>
+</html>
